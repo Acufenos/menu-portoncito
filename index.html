@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fonda La Guaca | Menú Digital</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600&family=Caveat:wght@600&display=swap" rel="stylesheet">
+<style>
+
+  /* ============================================
+     PALETA DE COLORES — cámbialos aquí si quieres
+     ajustar el estilo a otro restaurante.
+     ============================================ */
+  :root{
+    --cream:      #FBF6EC;   /* fondo tipo pared encalada */
+    --espresso:   #3A2318;   /* texto principal, café tostado */
+    --turquoise:  #1C8C8C;   /* turquesa Guatapé */
+    --mustard:    #E8A63C;   /* mostaza / mazorca */
+    --magenta:    #C43C64;   /* rosa fucsia de puertas coloridas */
+    --palm:       #2E6B4F;   /* verde palma / cafetal */
+    --card-bg:    #FFFFFF;
+  }
+
+  *{ box-sizing:border-box; }
+
+  html{ scroll-behavior:smooth; }
+
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--espresso);
+    font-family:'Work Sans', sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* Textura de fondo sutil: granos de café dispersos, muy tenue */
+  body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    opacity:0.05;
+    background-image:
+      radial-gradient(ellipse 5px 8px at 20px 30px, var(--espresso) 40%, transparent 41%),
+      radial-gradient(ellipse 5px 8px at 90px 80px, var(--espresso) 40%, transparent 41%),
+      radial-gradient(ellipse 5px 8px at 150px 20px, var(--espresso) 40%, transparent 41%),
+      radial-gradient(ellipse 5px 8px at 60px 130px, var(--espresso) 40%, transparent 41%);
+    background-size:180px 160px;
+  }
+
+  /* ============================================
+     FRANJA ZIGZAG — el elemento distintivo, inspirado
+     en los tejidos wayuu / chaquiras de la costa caribe.
+     ============================================ */
+  .zigzag-a, .zigzag-b{
+    height:16px;
+    width:100%;
+    background-size:24px 16px;
+    background-repeat:repeat-x;
+  }
+  .zigzag-a{
+    background-image:
+      linear-gradient(135deg, var(--turquoise) 25%, transparent 25%) 0 0,
+      linear-gradient(225deg, var(--turquoise) 25%, transparent 25%) 0 0,
+      linear-gradient(315deg, var(--cream) 25%, transparent 25%) 0 0,
+      linear-gradient(45deg,  var(--cream) 25%, transparent 25%) 0 0;
+  }
+  .zigzag-b{
+    height:10px;
+    background-size:20px 10px;
+    background-image:
+      linear-gradient(135deg, var(--mustard) 25%, transparent 25%) 0 0,
+      linear-gradient(225deg, var(--mustard) 25%, transparent 25%) 0 0,
+      linear-gradient(315deg, var(--magenta) 25%, transparent 25%) 0 0,
+      linear-gradient(45deg,  var(--magenta) 25%, transparent 25%) 0 0;
+  }
+
+  /* ============================================
+     HERO
+     ============================================ */
+  header.hero{
+    background:var(--espresso);
+    color:var(--cream);
+    text-align:center;
+    padding:38px 20px 34px;
+    position:relative;
+  }
+
+  /* Placeholder del logo — reemplaza este <div> por tu
+     <img src="tu-logo.png"> real cuando lo tengas. */
+  .logo-placeholder{
+    width:92px; height:92px;
+    margin:0 auto 16px;
+    border-radius:50%;
+    border:2px dashed var(--mustard);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Fraunces', serif;
+    font-size:12px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--mustard);
+    background:rgba(232,166,60,0.06);
+  }
+
+  h1.brand{
+    font-family:'Fraunces', serif;
+    font-weight:700;
+    font-size:clamp(2.2rem, 6vw, 3.2rem);
+    margin:0 0 6px;
+    letter-spacing:-0.01em;
+  }
+
+  p.tagline{
+    font-family:'Caveat', cursive;
+    font-size:1.5rem;
+    color:var(--mustard);
+    margin:0;
+  }
+
+  p.location{
+    margin:14px 0 0;
+    font-size:0.82rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:rgba(251,246,236,0.65);
+  }
+
+  /* ============================================
+     SECCIÓN DE MENÚ
+     ============================================ */
+  main{
+    max-width:720px;
+    margin:0 auto;
+    padding:44px 20px 30px;
+    position:relative;
+  }
+
+  h2.section-title{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:1.6rem;
+    text-align:center;
+    margin:0 0 6px;
+  }
+
+  p.section-sub{
+    text-align:center;
+    font-size:0.92rem;
+    color:rgba(58,35,24,0.6);
+    margin:0 0 34px;
+  }
+
+  .dish{
+    display:grid;
+    grid-template-columns:64px 1fr auto;
+    gap:16px;
+    align-items:start;
+    background:var(--card-bg);
+    border-radius:10px;
+    padding:18px 18px;
+    margin-bottom:16px;
+    box-shadow:0 1px 2px rgba(58,35,24,0.05);
+    border:1px solid rgba(58,35,24,0.08);
+    transition:transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .dish:hover{
+    transform:translateY(-2px);
+    box-shadow:0 6px 16px rgba(58,35,24,0.10);
+  }
+
+  .icon-badge{
+    width:56px; height:56px;
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    background:var(--espresso);
+  }
+  .icon-badge svg{ width:30px; height:30px; }
+
+  .dish-info h3{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:1.15rem;
+    margin:2px 0 6px;
+    color:var(--espresso);
+  }
+  .dish-info p{
+    margin:0;
+    font-size:0.9rem;
+    line-height:1.45;
+    color:rgba(58,35,24,0.72);
+  }
+
+  .price{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:1.05rem;
+    color:var(--palm);
+    white-space:nowrap;
+    align-self:center;
+  }
+
+  /* Nota para fotos reales — visible solo en este ejemplo */
+  .photo-note{
+    max-width:720px;
+    margin:0 auto 10px;
+    padding:0 20px;
+    text-align:center;
+  }
+  .photo-note span{
+    display:inline-block;
+    font-size:0.8rem;
+    background:rgba(232,166,60,0.15);
+    color:#8a5a13;
+    padding:6px 14px;
+    border-radius:20px;
+  }
+
+  footer{
+    background:var(--espresso);
+    color:rgba(251,246,236,0.7);
+    text-align:center;
+    padding:26px 20px;
+    font-size:0.82rem;
+  }
+  footer strong{ color:var(--mustard); }
+
+  @media (max-width:480px){
+    .dish{ grid-template-columns:48px 1fr; }
+    .price{ grid-column:2; margin-top:4px; }
+    .icon-badge{ width:44px; height:44px; }
+    .icon-badge svg{ width:24px; height:24px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="zigzag-a"></div>
+<div class="zigzag-b"></div>
+
+<header class="hero">
+  <div class="logo-placeholder">Tu logo</div>
+  <h1 class="brand">Fonda La Guaca</h1>
+  <p class="tagline">sabor de mi tierra, servido con cariño</p>
+  <p class="location">Cocina colombiana &middot; Menú digital</p>
+</header>
+
+<div class="zigzag-b"></div>
+<div class="zigzag-a"></div>
+
+<p class="photo-note"><span>📸 Ejemplo sin fotos reales — sube las tuyas cuando estén listas</span></p>
+
+<main>
+  <h2 class="section-title">Nuestros platos insignia</h2>
+  <p class="section-sub">Cinco clásicos de la cocina colombiana, hechos como en casa</p>
+
+  <!-- BANDEJA PAISA -->
+  <div class="dish">
+    <div class="icon-badge">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#FBF6EC" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="8.4"/>
+        <circle cx="12" cy="12" r="3.4"/>
+      </svg>
+    </div>
+    <div class="dish-info">
+      <h3>Bandeja Paisa</h3>
+      <p>Arroz, fríjoles, carne molida, chicharrón, huevo frito, plátano maduro, arepa, aguacate y chorizo. El plato más representativo de Antioquia.</p>
+    </div>
+    <div class="price">$32.000</div>
+  </div>
+
+  <!-- AJIACO -->
+  <div class="dish">
+    <div class="icon-badge">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#FBF6EC" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 11h16v2a8 8 0 0 1-16 0v-2z"/>
+        <path d="M8 11V8M12 11V7M16 11V8"/>
+      </svg>
+    </div>
+    <div class="dish-info">
+      <h3>Ajiaco Santafereño</h3>
+      <p>Sopa bogotana de pollo con tres tipos de papa y guascas, servida con crema de leche, alcaparras y aguacate.</p>
+    </div>
+    <div class="price">$26.000</div>
+  </div>
+
+  <!-- AREPA DE CHOCLO -->
+  <div class="dish">
+    <div class="icon-badge">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#FBF6EC" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="8"/>
+        <circle cx="9" cy="10" r="0.6" fill="#FBF6EC"/>
+        <circle cx="13" cy="9" r="0.6" fill="#FBF6EC"/>
+        <circle cx="15" cy="13" r="0.6" fill="#FBF6EC"/>
+        <circle cx="10" cy="14" r="0.6" fill="#FBF6EC"/>
+      </svg>
+    </div>
+    <div class="dish-info">
+      <h3>Arepa de Choclo</h3>
+      <p>Torta de maíz tierno y dulce, dorada a la parrilla y rellena de queso campesino derretido.</p>
+    </div>
+    <div class="price">$14.000</div>
+  </div>
+
+  <!-- EMPANADAS -->
+  <div class="dish">
+    <div class="icon-badge">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#FBF6EC" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 12a8 5 0 0 1 16 0 8 5 0 0 1-16 0z"/>
+        <path d="M12 8v8"/>
+      </svg>
+    </div>
+    <div class="dish-info">
+      <h3>Empanadas Colombianas</h3>
+      <p>Masa de maíz frita, rellena de papa y carne guisada. Se sirven con ají casero de cilantro y limón.</p>
+    </div>
+    <div class="price">$3.500 c/u</div>
+  </div>
+
+  <!-- SANCOCHO -->
+  <div class="dish">
+    <div class="icon-badge">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#FBF6EC" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 11h16l-1.2 6.5a2 2 0 0 1-2 1.5H7.2a2 2 0 0 1-2-1.5L4 11z"/>
+        <path d="M8 11V8M12 11V6M16 11V8"/>
+      </svg>
+    </div>
+    <div class="dish-info">
+      <h3>Sancocho</h3>
+      <p>Sopa espesa de gallina, plátano, yuca y mazorca, cocinada a fuego lento como en el campo colombiano.</p>
+    </div>
+    <div class="price">$28.000</div>
+  </div>
+
+</main>
+
+<div class="zigzag-a"></div>
+<div class="zigzag-b"></div>
+
+<footer>
+  <p><strong>Fonda La Guaca</strong> &middot; Este es un menú de ejemplo</p>
+  <p>Reemplaza logo, fotos, platos y precios por los tuyos antes de publicar</p>
+</footer>
+
+</body>
+</html>
