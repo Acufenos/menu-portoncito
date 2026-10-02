@@ -9,13 +9,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600&family=Caveat:wght@600&display=swap" rel="stylesheet">
 <style>
 
+  /* ============================================
+     PALETA DE COLORES
+     ============================================ */
   :root{
-    --cream:      #FBF6EC; 
-    --espresso:   #3A2318;   
-    --turquoise:  #1C8C8C;  
-    --mustard:    #E8A63C;   
-    --magenta:    #C43C64;   
-    --palm:       #2E6B4F; 
+    --cream:      #FBF6EC;   /* fondo tipo pared encalada */
+    --espresso:   #3A2318;   /* texto principal, café tostado */
+    --turquoise:  #1C8C8C;   /* turquesa Guatapé */
+    --mustard:    #E8A63C;   /* mostaza / mazorca */
+    --magenta:    #C43C64;   /* rosa fucsia de puertas coloridas */
+    --palm:       #2E6B4F;   /* verde palma / cafetal */
     --card-bg:    #FFFFFF;
   }
 
@@ -45,6 +48,9 @@
     background-size:180px 160px;
   }
 
+  /* ============================================
+     FRANJA ZIGZAG.
+     ============================================ */
   .zigzag-a, .zigzag-b{
     height:16px;
     width:100%;
@@ -68,6 +74,9 @@
       linear-gradient(45deg,  var(--magenta) 25%, transparent 25%) 0 0;
   }
 
+  /* ============================================
+     HERO
+     ============================================ */
 header.hero{
     position: relative;
     width: 100%;
@@ -77,6 +86,7 @@ header.hero{
     color: var(--cream);
   }
 
+  /* Controlamos el tamaño exacto de la imagen de fondo */
   .hero-bg{
     width: 100%;
     height: 280px;
@@ -99,6 +109,7 @@ header.hero{
     padding: 20px;
   }
 
+  /* Placeholder del logo*/
   .logo-placeholder{
     width:160px; height:160px;
     margin:0 auto 10px;
@@ -146,7 +157,7 @@ p.location{
   }
 
   /* ============================================
-     SECCIÓN DE MENÚ
+     SECCIÓN DE MENÚ Y FILTROS
      ============================================ */
   main{
     max-width:720px;
@@ -167,11 +178,45 @@ p.location{
     text-align:center;
     font-size:0.92rem;
     color:rgba(58,35,24,0.6);
-    margin:0 0 34px;
+    margin:0 0 20px;
+  }
+
+  /* Estilos para los botones de las categorías */
+  .menu-categories {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+  }
+
+  .filter-btn {
+    background: var(--cream);
+    border: 2px solid var(--turquoise);
+    color: var(--turquoise);
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 10px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .filter-btn:hover, .filter-btn.active {
+    background: var(--turquoise);
+    color: var(--card-bg);
+    box-shadow: 0 4px 10px rgba(28, 140, 140, 0.3);
+  }
+
+  /* Animación para cuando aparecen los platos */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 
   .dish{
-    display:block;
+    display: none; /* Por defecto todos los platos están ocultos hasta que se elija una opción */
     background:var(--card-bg);
     border-radius:14px;
     overflow:hidden;
@@ -179,13 +224,15 @@ p.location{
     box-shadow:0 1px 2px rgba(58,35,24,0.05);
     border:1px solid rgba(58,35,24,0.08);
     transition:transform 0.15s ease, box-shadow 0.15s ease;
+    animation: fadeIn 0.4s ease-in-out;
   }
+  
   .dish:hover{
     transform:translateY(-3px);
     box-shadow:0 10px 24px rgba(58,35,24,0.12);
   }
 
-  /* Relación aspecto de la imágenes */
+  /* Foto grande — es el atractivo principal del menú */
   .icon-badge{
     width:100%;
     aspect-ratio:4 / 3;
@@ -217,22 +264,6 @@ p.location{
     color:rgba(58,35,24,0.72);
   }
 
-  /* Tamaño de las imágenes */
-  .photo-note{
-    max-width:720px;
-    margin:0 auto 10px;
-    padding:0 20px;
-    text-align:center;
-  }
-  .photo-note span{
-    display:inline-block;
-    font-size:0.8rem;
-    background:rgba(232,166,60,0.15);
-    color:#8a5a13;
-    padding:6px 14px;
-    border-radius:20px;
-  }
-
   footer{
     background:var(--espresso);
     color:rgba(251,246,236,0.7);
@@ -247,10 +278,7 @@ p.location{
 <body>
 
 <header class="hero">
-	
   <img src="img/colombia-fondo.webp" alt="Bandera de Colombia" class="hero-bg">
-  
-  <!-- Aquí el texto de la bandera -->
   <div class="hero-content">
     <div class="logo-placeholder"><img src="img/logo.jpg" alt="El Portoncito Paisa"></div>
     <h1 class="brand">El Portoncito Paisa</h1>
@@ -265,9 +293,21 @@ p.location{
 <main>
   <h2 class="section-title">Nuestros platos</h2>
   <p class="section-sub">Clásicos de la cocina colombiana, hechos como en casa.</p>
-	
+
+  <!-- Botones de categorías -->
+  <div class="menu-categories">
+    <button class="filter-btn" data-category="desayunos">Desayunos</button>
+    <button class="filter-btn" data-category="almuerzos">Almuerzos</button>
+    <button class="filter-btn" data-category="fin-de-semana">Fin de semana</button>
+  </div>
+
+  <!-- Mensaje inicial antes de seleccionar -->
+  <p id="mensaje-inicial" class="section-sub" style="font-size: 1.05rem; color: var(--turquoise); font-weight: 600;">
+    👆 Selecciona una opción arriba para ver los platos.
+  </p>
+
   <!-- BANDEJA PAISA -->
-  <div class="dish">
+  <div class="dish" data-category="almuerzos">
     <div class="icon-badge">
       <img src="img/bandeja_paisa.webp" alt="Bandeja Paisa">
     </div>
@@ -278,7 +318,7 @@ p.location{
   </div>
   
   <!-- BANDEJA PAISA CON SOBREBARRIGA -->
-  <div class="dish">
+  <div class="dish" data-category="almuerzos">
     <div class="icon-badge">
       <img src="img/paisasobrebarriga.webp" alt="Paisa con Sobrebarriga">
     </div>
@@ -289,7 +329,7 @@ p.location{
   </div>
 
   <!-- CAZUELA DE FRIJOLES -->
-  <div class="dish">
+  <div class="dish" data-category="almuerzos">
     <div class="icon-badge">
       <img src="img/cazuelafrijoles.webp" alt="Cazuela de frijoles paisa ">
     </div>
@@ -300,7 +340,7 @@ p.location{
   </div>
 
   <!-- MILANESA DE POLLO -->
-  <div class="dish">
+  <div class="dish" data-category="almuerzos">
     <div class="icon-badge">
       <img src="img/milanesa_pollo.webp" alt="Milanesa de Pollo">
     </div>
@@ -311,7 +351,7 @@ p.location{
   </div>
 
   <!-- EMPANADAS COLOMBIANA -->
-  <div class="dish">
+  <div class="dish" data-category="desayunos">
     <div class="icon-badge">
       <img src="img/empanadas.webp" alt="Empanadas Colombianas">
     </div>
@@ -322,7 +362,7 @@ p.location{
   </div>
 
   <!-- PARGO FRITO -->
-  <div class="dish">
+  <div class="dish" data-category="almuerzos">
     <div class="icon-badge">
       <img src="img/mojarra_costeña.webp" alt="Mojarra Costeña">
     </div>
@@ -333,7 +373,7 @@ p.location{
   </div>
 
   <!-- BUÑUELOS -->
-  <div class="dish">
+  <div class="dish" data-category="desayunos">
     <div class="icon-badge">
       <img src="img/buñuelos.webp" alt="Buñuelos">
     </div>
@@ -344,18 +384,18 @@ p.location{
   </div>
 
     <!-- PATACONES HOGADO -->
-  <div class="dish">
+  <div class="dish" data-category="almuerzos desayunos">
     <div class="icon-badge">
       <img src="img/hogao.webp" alt="Patacones con Hogao">
     </div>
     <div class="dish-info">
       <h3>Patacones con Hogado</h3>
-      <p>Crujientes patacones de plátano verde cubiertos con abundante hogao casero de tomate y cebolla.   </p>
+      <p>Crujientes patacones de plátano verde cubiertos con abundante hogao casero de tomate y cebolla.</p>
     </div>
   </div>
 
     <!-- SOBREBARRIGA A LA PLANCHA -->
-  <div class="dish">
+  <div class="dish" data-category="almuerzos">
     <div class="icon-badge">
       <img src="img/sobrebarriga_frijoles.webp" alt="Sobrebarriga ASADA">
     </div>
@@ -366,7 +406,7 @@ p.location{
   </div>
 
     <!-- SOBREBARRIGA GUISADA -->
-  <div class="dish">
+  <div class="dish" data-category="almuerzos">
     <div class="icon-badge">
       <img src="img/sudado_sobrebarriga.webp" alt="Sobrebarriga Tradicional">
     </div>
@@ -377,7 +417,7 @@ p.location{
   </div>
 
     <!-- TAMAL COLOMBIANO -->
-  <div class="dish">
+  <div class="dish" data-category="desayunos fin-de-semana">
     <div class="icon-badge">
       <img src="img/tamal.webp" alt="Tamal">
     </div>
@@ -388,7 +428,7 @@ p.location{
   </div>
   
       <!-- AJIACO -->
-  <div class="dish">
+  <div class="dish" data-category="fin-de-semana">
     <div class="icon-badge">
       <img src="img/ajiaco.webp" alt="ajiaco">
     </div>
@@ -399,7 +439,7 @@ p.location{
   </div>
   
       <!-- RACIÓN DE CHICHARRÓN -->
-  <div class="dish">
+  <div class="dish" data-category="desayunos almuerzos">
     <div class="icon-badge">
       <img src="img/raciondechicharron.webp" alt="ración de chicharron">
     </div>
@@ -410,7 +450,7 @@ p.location{
   </div>
 	
 	  <!-- CALENTADO CON HUEVO PERICO Y BISTEC -->
-  <div class="dish">
+  <div class="dish" data-category="desayunos">
     <div class="icon-badge">
       <img src="img/calentado.webp" alt="Calentado con huevo perico">
     </div>
@@ -421,7 +461,7 @@ p.location{
   </div>
   
         <!-- CALDO DE COSTILLA -->
-  <div class="dish">
+  <div class="dish" data-category="fin-de-semana">
     <div class="icon-badge">
       <img src="img/caldocostilla.webp" alt="costilla">
     </div>
@@ -432,7 +472,7 @@ p.location{
   </div>
   
         <!-- PASTELES DE POLLO -->
-  <div class="dish">
+  <div class="dish" data-category="fin-de-semana">
     <div class="icon-badge">
       <img src="img/pastelitopollo.webp" alt="Pasteles de pollo">
     </div>
@@ -443,7 +483,7 @@ p.location{
   </div>
   
        <!-- SANCOCHO DE RES -->
-  <div class="dish">
+  <div class="dish" data-category="almuerzos fin-de-semana">
     <div class="icon-badge">
       <img src="img/sancochores.webp" alt="sancocho">
     </div>
@@ -454,7 +494,7 @@ p.location{
   </div>
   
         <!-- PAN DE BONO-->
-  <div class="dish">
+  <div class="dish" data-category="desayunos fin-de-semana">
     <div class="icon-badge">
       <img src="img/panbono.webp" alt="Pan de bono">
     </div>
@@ -465,7 +505,7 @@ p.location{
   </div>
   
         <!-- MAZAMORRA ANTIOQUEÑA -->
-  <div class="dish">
+  <div class="dish" data-category="almuerzos">
     <div class="icon-badge">
       <img src="img/mazamorra.webp" alt="mazamorra antioqueña">
     </div>
@@ -476,7 +516,7 @@ p.location{
   </div>
   
         <!-- ARROZ CON POLLO -->
-  <div class="dish">
+  <div class="dish" data-category="almuerzos">
     <div class="icon-badge">
       <img src="img/arrozpollo.webp" alt="arroz con pollo">
     </div>
@@ -487,7 +527,7 @@ p.location{
   </div>
   
 	    <!-- CHORIZO ANTIOQUEÑO -->
-  <div class="dish">
+  <div class="dish" data-category="desayunos almuerzos">
     <div class="icon-badge">
       <img src="img/chorizoantioque.webp" alt="chorizo antioqueño">
     </div>
@@ -498,7 +538,7 @@ p.location{
   </div>
   
 		<!-- SANCOCHO DE GALLINA -->
-  <div class="dish">
+  <div class="dish" data-category="fin-de-semana">
     <div class="icon-badge">
       <img src="img/sancochogallina.webp" alt="sancocho de gallina">
     </div>
@@ -509,7 +549,7 @@ p.location{
   </div>
   
 		<!-- MONDONGO -->
-  <div class="dish">
+  <div class="dish" data-category="almuerzos">
     <div class="icon-badge">
       <img src="img/mondongo.webp" alt="mondongo">
     </div>
@@ -520,7 +560,7 @@ p.location{
   </div>
   
 		<!-- TORTA DE CARNE -->
-  <div class="dish">
+  <div class="dish" data-category="fin-de-semana">
     <div class="icon-badge">
       <img src="img/tortacarne.webp" alt="torta de carne">
     </div>
@@ -531,7 +571,7 @@ p.location{
   </div>
   
 		<!-- ESPINAZO DE CERDO GUISADO -->
-  <div class="dish">
+  <div class="dish" data-category="almuerzos">
     <div class="icon-badge">
       <img src="img/espinazocerdo.webp" alt="espinazo de cerdo guisado">
     </div>
@@ -542,7 +582,7 @@ p.location{
   </div>
   
   		<!-- PAPAS RELLENAS -->
-  <div class="dish">
+  <div class="dish" data-category="desayunos">
     <div class="icon-badge">
       <img src="img/papasrellenas.webp" alt="papas rellenas">
     </div>
@@ -561,6 +601,43 @@ p.location{
   <p>Valencia, Calle Carabobo (entre Michelena y Peña).</p>
   <p>Contacto: 0424-4071028</p>
 </footer>
+
+<!-- SCRIPT PARA FILTRAR EL MENÚ -->
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const botones = document.querySelectorAll(".filter-btn");
+    const platos = document.querySelectorAll(".dish");
+    const mensajeInicial = document.getElementById("mensaje-inicial");
+
+    botones.forEach(boton => {
+      boton.addEventListener("click", function() {
+        // 1. Quitar la selección (color activo) de todos los botones
+        botones.forEach(b => b.classList.remove("active"));
+        // 2. Colorear solo el botón que se acaba de presionar
+        this.classList.add("active");
+
+        // 3. Ocultar el mensaje "👆 Selecciona una opción..."
+        if(mensajeInicial) {
+          mensajeInicial.style.display = "none";
+        }
+
+        const categoriaSeleccionada = this.getAttribute("data-category");
+
+        // 4. Mostrar solo los platos que tengan la categoría seleccionada
+        platos.forEach(plato => {
+          // Dividimos las categorías por si un plato pertenece a varias
+          const categoriasPlato = plato.getAttribute("data-category").split(" ");
+          
+          if (categoriasPlato.includes(categoriaSeleccionada)) {
+            plato.style.display = "block";
+          } else {
+            plato.style.display = "none";
+          }
+        });
+      });
+    });
+  });
+</script>
 
 </body>
 </html>
