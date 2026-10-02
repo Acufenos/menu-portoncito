@@ -9,9 +9,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600&family=Caveat:wght@600&display=swap" rel="stylesheet">
 <style>
 
-  /* ============================================
-     PALETA DE COLORES
-     ============================================ */
   :root{
     --cream:      #FBF6EC; 
     --espresso:   #3A2318;   
@@ -48,9 +45,6 @@
     background-size:180px 160px;
   }
 
-  /* ============================================
-     FRANJA ZIGZAG.
-     ============================================ */
   .zigzag-a, .zigzag-b{
     height:16px;
     width:100%;
@@ -74,9 +68,6 @@
       linear-gradient(45deg,  var(--magenta) 25%, transparent 25%) 0 0;
   }
 
-  /* ============================================
-     HERO
-     ============================================ */
 header.hero{
     position: relative;
     width: 100%;
@@ -86,7 +77,6 @@ header.hero{
     color: var(--cream);
   }
 
-  /* Controlamos el tamaño exacto de la imagen de fondo */
   .hero-bg{
     width: 100%;
     height: 280px;
@@ -109,7 +99,6 @@ header.hero{
     padding: 20px;
   }
 
-  /* Placeholder del logo*/
   .logo-placeholder{
     width:160px; height:160px;
     margin:0 auto 10px;
@@ -196,7 +185,7 @@ p.location{
     box-shadow:0 10px 24px rgba(58,35,24,0.12);
   }
 
-  /* Foto grande — es el atractivo principal del menú */
+  /* Relación aspecto de la imágenes */
   .icon-badge{
     width:100%;
     aspect-ratio:4 / 3;
@@ -228,7 +217,7 @@ p.location{
     color:rgba(58,35,24,0.72);
   }
 
-  /* Nota para fotos reales — visible solo en este ejemplo */
+  /* Tamaño de las imágenes */
   .photo-note{
     max-width:720px;
     margin:0 auto 10px;
@@ -258,10 +247,10 @@ p.location{
 <body>
 
 <header class="hero">
-  <!-- La bandera ahora es una imagen real con tamaño controlado -->
+	
   <img src="img/colombia-fondo.webp" alt="Bandera de Colombia" class="hero-bg">
   
-  <!-- Contenido que irá flotando encima de la bandera -->
+  <!-- Aquí el texto de la bandera -->
   <div class="hero-content">
     <div class="logo-placeholder"><img src="img/logo.jpg" alt="El Portoncito Paisa"></div>
     <h1 class="brand">El Portoncito Paisa</h1>
@@ -276,7 +265,7 @@ p.location{
 <main>
   <h2 class="section-title">Nuestros platos</h2>
   <p class="section-sub">Clásicos de la cocina colombiana, hechos como en casa.</p>
-
+	
   <!-- BANDEJA PAISA -->
   <div class="dish">
     <div class="icon-badge">
@@ -306,7 +295,7 @@ p.location{
     </div>
     <div class="dish-info">
       <h3>Cazuela de Frijoles</h3>
-      <p>Porción de frijoles con chicharrón, chorizo, tajada picada, aguacate y un huevo frito acompañado con arroz y arepa..</p>
+      <p>Porción de frijoles con chicharrón, chorizo, tajada picada, aguacate y un huevo frito acompañado con arroz y arepa.</p>
     </div>
   </div>
 
@@ -317,7 +306,7 @@ p.location{
     </div>
     <div class="dish-info">
       <h3>Milanesa de Pollo</h3>
-      <p>Jugosa pechuga de pollo acompañada con dulces tajadas de plátano maduro, arroz blanco, arepa y ensalada tradicional.</p>
+      <p>Jugosa pechuga de pollo acompañada con dulces tajadas de plátano maduro, arroz blanco, arepa y ensalada de repollo y tomate.</p>
     </div>
   </div>
 
@@ -350,7 +339,7 @@ p.location{
     </div>
     <div class="dish-info">
       <h3>Buñuelos</h3>
-      <p>Deliciosos buñuelos elaborados con queso costeño, almidón de yuca y un esponjoso exterior dorado. </p>
+      <p>Deliciosos buñuelos elaborados con queso costeño y un esponjoso exterior dorado.</p>
     </div>
   </div>
 
@@ -361,7 +350,7 @@ p.location{
     </div>
     <div class="dish-info">
       <h3>Patacones con Hogado</h3>
-      <p>Crujientes patacones de plátano verde cubiertos con abundante hogao casero de tomate y cebolla, acompañados de arroz blanco y arepa asada.   </p>
+      <p>Crujientes patacones de plátano verde cubiertos con abundante hogao casero de tomate y cebolla.   </p>
     </div>
   </div>
 
@@ -372,7 +361,7 @@ p.location{
     </div>
     <div class="dish-info">
       <h3>Sobrebarriga a la Plancha</h3>
-      <p>Tierna sobrebarriga servida con una porción generosa de frijoles rojos, arroz blanco, arepa asada y ensalada fresca de repollo y tomate.</p>
+      <p>Tierna sobrebarriga servida con una porción de frijoles rojos, arroz blanco, arepa asada y ensalada fresca de repollo y tomate.</p>
     </div>
   </div>
 
@@ -383,7 +372,7 @@ p.location{
     </div>
     <div class="dish-info">
       <h3>Sobrebarriga Guisada</h3>
-      <p>Corte suave de sobrebarriga cocida en salsa criolla con papa y yuca sudadas, acompañada de frijoles rojos, arroz blanco, arepa y ensalada.</p>
+      <p>Corte suave de sobrebarriga cocida en salsa criolla con papa y yuca sudada acompañada de frijoles rojos, arroz blanco, arepa y ensalada.</p>
     </div>
   </div>
 
@@ -394,7 +383,7 @@ p.location{
     </div>
     <div class="dish-info">
       <h3>Tamal Colombiano</h3>
-      <p>Masa suave de maíz aliñada con guiso, vegetales y carnes, cocinada en hoja de plátano y acompañada de arepitas blancas asadas.</p>
+      <p>Masa suave de maíz aliñada con guiso cocinada en hoja de plátano y acompañada de arepitas blancas asadas.</p>
     </div>
   </div>
   
@@ -405,7 +394,7 @@ p.location{
     </div>
     <div class="dish-info">
       <h3>Ajiaco (Solo Domingos)</h3>
-      <p>Deliciosa sopa bogotana de gallina espesa a base de distintos tipos de papas acompañada de arroz, ensalada y arepa.</p>
+      <p>Deliciosa sopa bogotana de gallina a base de distintos tipos de papas acompañada de arroz, aguacate, ensalada y arepa.</p>
     </div>
   </div>
   
@@ -416,7 +405,7 @@ p.location{
     </div>
     <div class="dish-info">
       <h3>Racion de chicharrón</h3>
-      <p>Trozos de chicharrón de cerdo fritos servido con arepita blanca asada. El antojo colombiano ideal para empezar o compartir.</p>
+      <p>El antojo colombiano ideal para compartir con trozos de chicharrón de cerdo fritos servido con arepita blanca asada.</p>
     </div>
   </div>
 	
@@ -427,7 +416,7 @@ p.location{
     </div>
     <div class="dish-info">
       <h3>Calentado con Huevos Pericos y Bistec</h3>
-      <p>Tradicional mezcla casera de arroz y frijoles acompañada de unos clásicos huevos revueltos con tomate y cebolla, arepa y un jugoso bistec de res.</p>
+      <p>Tradicional mezcla casera de arroz y frijoles acompañada de unos clásicos huevos revueltos con tomate y cebolla, arepa y un jugoso bistec.</p>
     </div>
   </div>
   
@@ -493,10 +482,75 @@ p.location{
     </div>
     <div class="dish-info">
       <h3>Arroz con Pollo</h3>
-      <p>Tradicional y colorido arroz amarillo preparado con abundante pollo desmechado, ensalada, huevo duro, tajada y arepa.</p>
+      <p>Tradicional y colorido arroz amarillo preparado con pollo desmechado, ensalada, huevo duro, tajada y arepa.</p>
     </div>
   </div>
   
+	    <!-- CHORIZO ANTIOQUEÑO -->
+  <div class="dish">
+    <div class="icon-badge">
+      <img src="img/chorizoantioque.webp" alt="chorizo antioqueño">
+    </div>
+    <div class="dish-info">
+      <h3>Chorizo Antioqueño</h3>
+      <p>Chorizo de cerdo elaborado con la auténtica receta artesanal paisa, asado hasta quedar a la perfección.</p>
+    </div>
+  </div>
+  
+		<!-- SANCOCHO DE GALLINA -->
+  <div class="dish">
+    <div class="icon-badge">
+      <img src="img/sancochogallina.webp" alt="sancocho de gallina">
+    </div>
+    <div class="dish-info">
+      <h3>Sancocho de Gallina (Viernes y Domingos)</h3>
+      <p>Exquisito sancocho de gallina acompañado de ensalada, arroz y arepa.</p>
+    </div>
+  </div>
+  
+		<!-- MONDONGO -->
+  <div class="dish">
+    <div class="icon-badge">
+      <img src="img/mondongo.webp" alt="mondongo">
+    </div>
+    <div class="dish-info">
+      <h3>Mondongo</h3>
+      <p>Tradicional sopa de mondongo acompañado de arroz y arepa.</p>
+    </div>
+  </div>
+  
+		<!-- TORTA DE CARNE -->
+  <div class="dish">
+    <div class="icon-badge">
+      <img src="img/tortacarne.webp" alt="torta de carne">
+    </div>
+    <div class="dish-info">
+      <h3>Torta de Carne (Solo Domingos)</h3>
+      <p>Receta casera de carne molida aliñada con el inconfundible sabor tradicional colombiano, horneada a la perfección.</p>
+    </div>
+  </div>
+  
+		<!-- ESPINAZO DE CERDO GUISADO -->
+  <div class="dish">
+    <div class="icon-badge">
+      <img src="img/espinazocerdo.webp" alt="espinazo de cerdo guisado">
+    </div>
+    <div class="dish-info">
+      <h3>Espinazo de Cerdo Guisado</h3>
+      <p>Tierno y jugoso corte de cerdo cocinado en nuestro auténtico guiso criollo.</p>
+    </div>
+  </div>
+  
+  		<!-- PAPAS RELLENAS -->
+  <div class="dish">
+    <div class="icon-badge">
+      <img src="img/papasrellenas.webp" alt="papas rellenas">
+    </div>
+    <div class="dish-info">
+      <h3>Papas Rellenas</h3>
+      <p>Suave puré de papa crujientes y doraditas por fuera envuelta con abundante y delicioso relleno.</p>
+    </div>
+  </div>
 </main>
 
 <div class="zigzag-a"></div>
