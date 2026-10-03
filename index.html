@@ -416,14 +416,14 @@ p.location{
     </div>
   </div>
 
-    <!-- TAMAL COLOMBIANO -->
-  <div class="dish" data-category="desayunos fin-de-semana">
+  		<!-- PAPAS RELLENAS -->
+  <div class="dish" data-category="desayunos">
     <div class="icon-badge">
-      <img src="img/tamal.webp" alt="Tamal">
+      <img src="img/papasrellenas.webp" alt="papas rellenas">
     </div>
     <div class="dish-info">
-      <h3>Tamal Colombiano</h3>
-      <p>Masa suave de maíz aliñada con guiso cocinada en hoja de plátano y acompañada de arepitas blancas asadas.</p>
+      <h3>Papas Rellenas</h3>
+      <p>Suave puré de papa crujientes y doraditas por fuera envuelta con abundante y delicioso relleno.</p>
     </div>
   </div>
   
@@ -581,14 +581,25 @@ p.location{
     </div>
   </div>
   
-  		<!-- PAPAS RELLENAS -->
+    	<!-- MORCILLA CON PAPAS -->
   <div class="dish" data-category="desayunos">
     <div class="icon-badge">
-      <img src="img/papasrellenas.webp" alt="papas rellenas">
+      <img src="img/morcillaconpapas.webp" alt="morcillas con papas">
     </div>
     <div class="dish-info">
-      <h3>Papas Rellenas</h3>
-      <p>Suave puré de papa crujientes y doraditas por fuera envuelta con abundante y delicioso relleno.</p>
+      <h3>Morcilla con Papas</h3>
+      <p>Exquisita morcilla sazonada con el tradicional toque de arroz y finas hierbas, acompañada con las clásicas papas saladas.</p>
+    </div>
+  </div>
+  
+     <!-- TAMAL COLOMBIANO -->
+  <div class="dish" data-category="desayunos fin-de-semana">
+    <div class="icon-badge">
+      <img src="img/tamal.webp" alt="Tamal">
+    </div>
+    <div class="dish-info">
+      <h3>Tamal Colombiano</h3>
+      <p>Masa suave de maíz aliñada con guiso cocinada en hoja de plátano y acompañada de arepitas blancas asadas.</p>
     </div>
   </div>
 </main>
@@ -602,7 +613,7 @@ p.location{
   <p>Contacto: 0424-4071028</p>
 </footer>
 
-<!-- SCRIPT PARA FILTRAR EL MENÚ -->
+<!-- Menú interactivo -->
 <script>
   document.addEventListener("DOMContentLoaded", function() {
     const botones = document.querySelectorAll(".filter-btn");
@@ -611,21 +622,15 @@ p.location{
 
     botones.forEach(boton => {
       boton.addEventListener("click", function() {
-        // 1. Quitar la selección (color activo) de todos los botones
         botones.forEach(b => b.classList.remove("active"));
-        // 2. Colorear solo el botón que se acaba de presionar
         this.classList.add("active");
 
-        // 3. Ocultar el mensaje "👆 Selecciona una opción..."
         if(mensajeInicial) {
           mensajeInicial.style.display = "none";
         }
 
         const categoriaSeleccionada = this.getAttribute("data-category");
-
-        // 4. Mostrar solo los platos que tengan la categoría seleccionada
         platos.forEach(plato => {
-          // Dividimos las categorías por si un plato pertenece a varias
           const categoriasPlato = plato.getAttribute("data-category").split(" ");
           
           if (categoriasPlato.includes(categoriaSeleccionada)) {
